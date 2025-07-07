@@ -46,7 +46,7 @@ wb = load_workbook('../docs/employees.xlsx')
 ws = wb.active
 
 rows_count = ws.max_row # число заполненных строк
-for row in ws.iter_rows(values_only=True):
+for row in ws.iter_rows(min_row=2, values_only=True):
     fio, pos, dept = row
     # print(row)
     print(f'Погоняло: {fio}, Хто: {pos}, Где: {dept}')
