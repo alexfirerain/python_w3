@@ -27,11 +27,13 @@ paragraph = doc.add_paragraph()
 # добавим таблицу
 table = doc.add_table(rows=3, cols=3)
 
-doc.save('../docs/Report.docs')
 # заполняем
-# for i, row in enumerate(table.rows):
-#     for j, cell in enumerate(table.columns):
-#         cell.text = f'Строка {i + 1}, Колонка {j + 1}'
+for i, row in enumerate(table.rows):
+    for j, cell in enumerate(table.columns):
+        cell.text = f'Строка {i + 1}, Колонка {j + 1}'
 
 doc.add_paragraph()
 doc.add_picture('../images/harry_python.jpg', width=Mm(105))
+
+
+doc.save('../docs/Report.docs')
