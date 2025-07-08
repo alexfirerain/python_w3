@@ -7,10 +7,10 @@ def summ(a, b):
 def diff(a, b):
     return a - b
 
+
 print(__name__)
 
-if __name__== '__main__':
+if __name__ == '__main__':
     print('это библиотека, а исполняется main')
 else:
     print('это и есть исполнение')
-

@@ -52,7 +52,7 @@ finally:
         fo.write('default')
         fo.close()
         print('continue')
-# ?!
+    # ?!
     if not fo.closed:
         fo.close()
 

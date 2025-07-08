@@ -44,4 +44,3 @@ while True:
 
 with open('files/dict.dat', 'wb') as dump_out:
     pickle.dump(voc, dump_out)
-

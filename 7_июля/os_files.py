@@ -1,10 +1,11 @@
 import os
+
 """
 Даёт доступ к системному функционалу
 """
 
 # os.mkdir('libs') # создаёт исключение, если папка уже есть
-os.makedirs('libs', exist_ok=True) # теперь нет, "мягкое создание"
+os.makedirs('libs', exist_ok=True)  # теперь нет, "мягкое создание"
 
 print(os.path.exists('libs'))
 os.rmdir('libs')
@@ -12,7 +13,7 @@ print(os.path.exists('libs'))
 if os.path.exists('libs'):
     os.rmdir('libs')
 
-path = os.getcwd() # get current working directory
+path = os.getcwd()  # get current working directory
 print(path)
 root = os.getcwd()
 
