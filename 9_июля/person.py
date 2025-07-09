@@ -2,6 +2,7 @@ class Person:
     def __init__(self, name='Homo', age=1):
         self._name = name  # к закрытым полям обращаться можно, но не следует
         self._age = age  # ибо Питон это для взрослых людей
+        # поля в Питоне зовут атрибутами обычно
 
     def person_info(self):
         print(f'чел с именем {self._name} и возрастом {self._age}')
