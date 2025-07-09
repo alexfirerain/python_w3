@@ -26,7 +26,7 @@ except FileNotFoundError:
     print_voc()
 
 while True:
-    temp = input('\nВведи слово для перевода или "#" для завршения: ')
+    temp = input('\nВведи слово для перевода или "#" для завершения: ')
     word = temp.strip().lower()
     if word == '#' or word == '№':
         break
