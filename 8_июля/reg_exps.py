@@ -1,7 +1,6 @@
 # РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
 # поиск по паттерну
 import re
-from random import sample
 
 # банальный пример, эквивалентный find()
 pattern = '20'
@@ -63,3 +62,38 @@ pat_n = 'Go{2,}gle'
 print(re.findall(pat_n, sample))
 
 # ДЗ - регулярка, убирающая знаки препинания
+# если символ есть метасимвол (из управляющих в регулярках), экранируется он
+# скобки в регулярке — "группа захвата"
+# в принципе r'' лучше указывать даже когда нет особых символов
+
+pattern_g = r'стеклянн?ый'  # "стекляный" и "стеклянный" подходят (вторая 'н' от 0 до 1 раз)
+
+glass_str = "стекляный, стеклянный, оловянный, серебряный"
+print(re.findall(pattern_g, glass_str))
+
+
+gr_pat = r'<img.*>' # вот какой жадина
+
+# метод match() ищет что-то в начале строки
+# метод search() ищет по всей строке до первого вхождения
+# метод findall() ищет все вхождения
+html_rag = 'Картинка <img src="bg.jpg"> в тексте</p>'
+print(re.findall(gr_pat, html_rag))
+
+lazy_pat = r'<img.*?>' # lazy / non-greedy
+print(re.findall(lazy_pat, html_rag))
+
+# жадный квантификатор (greedy quantifier)
+greed_pat = r'<img[^>]+src="([^">]+)"'
+print(re.findall(greed_pat, html_rag))
+
+site_sample = '<b>Вот начало:</b><p>Содержание</p><i>примечания</i>'
+# как вытащить содержимое?
+ext_pat = '<p>(.*?)</p>' # лениво
+print(re.findall(ext_pat, site_sample))
+
+new_site_text = '<b></b><p align = "center"></p>'
+# тэг с атрибутами сломал наш план
+new_site_pat = r'<p[^>]*>(.*)</p>' # или более лениво r'<p[^>]*>(.*?)</p>'
+print(re.findall(new_site_pat, site_sample))
+
