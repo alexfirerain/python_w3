@@ -1,5 +1,6 @@
 from math import pi, hypot
 from statistics import mean
+from abc import abstractmethod
 
 
 class Book:
@@ -227,3 +228,59 @@ class QuadraticFunction:
 
     def __call__(self, x):  # y = ax^2 + bx + c
         return self.a * x ** 2 + self.b * x + self.c
+
+
+class Quadratic(Rectangle):
+    def __init__(self, side):
+        super().__init__(side, side)
+
+
+class Shape:
+    def info(self):
+        print(f'Класс: {self.__class__.__name__}')
+
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def get_name(self):
+        pass
+
+
+class RegularTriangle(Square):
+    def __init__(self, side):
+        super().__init(side)  # в случае множественного наследования (!) надо просто указать напрямую родителя
+        self.side = side
+        self.name = "треугольник"
+
+    def area(self):
+        return (self.side ** 2 * 3 ** 0.5)
+
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        if balance < 0:
+            raise ValueError('balance can\'t be negative here')
+        self._owner = owner
+        self._balance = balance
+
+    def get_owner(self):
+        return self._owner
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError('only positive amounts available to deposit')
+
+        self._balance += amount
+        return 'внесена сумма ' + self._balance
+
+    def withdraw(self, amount):
+        if amount > self._balance:
+            raise ValueError('the balance is insufficient to withdraw such amount')
+        if amount <= 0:
+            raise ValueError('only positive amounts available to withdraw')
+
+        self._balance -= amount
+        return 'выдана сумма ' + self._balance
+
