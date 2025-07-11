@@ -1,6 +1,7 @@
 from animals import Cat, Dog, Elephant
 import random, time
 
+
 class Zoo:
     def __init__(self):
         self._animals = [Cat(), Dog(), Elephant()]
@@ -15,6 +16,7 @@ class Zoo:
                 print("…и тишина…")
                 break
 
+
 def main():
     print("Добро пожаловать в наш зверопарк «Дом Дядюшки Питона»!\n"
           "Вводите любые символы, чтобы ходить по нему и прислушиваться.\n"
@@ -23,5 +25,6 @@ def main():
     while input("Погуляем по зверопарку? ") != "0":
         zoo.make_all_sounds()
     print("До свидания! Заходите к нам ещё, когда будет больше зверей и функционала!")
+
 
 main()
